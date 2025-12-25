@@ -1,0 +1,17 @@
+{
+  "now": {
+    "android": "https://store.steampowered.com/app/2233830",
+    "ios": "https://store.steampowered.com/app/2233830",
+    "pc": "https://store.steampowered.com/app/2233830"
+  },
+  "oqta": {
+    "android": "https://oqta.com/",
+    "ios": "https://oqta.com/",
+    "pc": "https://oqta.com/"
+  },
+  "root": {
+    "android": "https://store.steampowered.com/app/2233830",
+    "ios": "https://store.steampowered.com/app/2233830",
+    "pc": "https://store.steampowered.com/app/2233830"
+  }
+}

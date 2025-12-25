@@ -1,0 +1,27 @@
+{
+  "name": "FastAPI Backend Development Container",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.pythonPath": "/app/venv/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "gitpod.gitpod-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install -r /app/requirements.txt",
+  "mounts": [
+    "type=bind,source=${localWorkspaceFolder},target=/app,consistency=cached"
+  ],
+  "runArgs": [
+    "--env", "PYTHONPATH=/app",
+    "--env", "ENV=development"
+  ],
+  "forwardPorts": [8000]
+}

@@ -1,0 +1,30 @@
+name: gemini-cli
+
+services:
+  gemini:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gemini-cli:latest
+    working_dir: /workspace
+    # Mount your current project so Gemini CLI can see your code/docs
+    volumes:
+      - ./:/workspace
+    # Load env vars from .env (you'll copy .env.example -> .env and edit)
+    env_file:
+      - .env
+    environment:
+      # === Auth options (pick ONE) ===
+      # Option 1: AI Studio API key
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      # Option 2: Vertex AI (set a Google API key and flip the flag)
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - GOOGLE_GENAI_USE_VERTEXAI=${GOOGLE_GENAI_USE_VERTEXAI:-false}
+      # Optional: set your GCP project for Code Assist licenses / quotas
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT:-}
+      # Locale tweaks
+      - TZ=${TZ:-Asia/Tokyo}
+    tty: true
+    stdin_open: true
+    # Drop to a shell; run `gemini` inside the container
+    command: ["/bin/bash"]
